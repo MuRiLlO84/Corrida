@@ -16,7 +16,6 @@ function draw() {
 
 }
 
-//mostra se tá ativo
 function ativaJogo() {
   if (focused == true) {
     background("blue")
@@ -25,7 +24,6 @@ function ativaJogo() {
   }
 }
 
-//mostra jogadores
 function desenhaJogadores() {
   textSize(35)
   for (let i = 0; i < quant; i++) {
@@ -33,7 +31,6 @@ function desenhaJogadores() {
   }
 }
 
-//desenha linha de chegada
 function desenhaChegada() {
   fill("black")
   rect(350,0,10,400)
@@ -43,7 +40,6 @@ function desenhaChegada() {
   }
 }
 
-//verifica vencedor
 function verificaVencedor() {
   for (let i = 0; i < quant; i++) {
     if (xj[i] > 350) {
@@ -52,7 +48,6 @@ function verificaVencedor() {
   }
 }
 
-//movimenta jogadores
 function keyReleased () {
   for (let i = 0; i< quant; i++) {
     if (key == teclas[i]) {
