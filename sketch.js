@@ -1,7 +1,8 @@
-let xj1 = 0
-let xj2 = 0
-let xj3 = 0
-let xj4 = 0
+let xj = [0,0,0,0,0]
+let yj = [50,130,210,290,370]
+let j  = ["👻","👺","🤡","🤬","👽"]
+let teclas = ['a','s','d','f','g']
+let quant = j.length
 
 function setup() {
   createCanvas(400, 400);
@@ -27,49 +28,35 @@ function ativaJogo() {
 //mostra jogadores
 function desenhaJogadores() {
   textSize(35)
-  text("👻",xj1,70)
-  text("👺",xj2,160)
-  text("🤡",xj3,250)
-  text("🤬",xj4,340)
+  for (let i = 0; i < quant; i++) {
+    text(j[i],xj[i],yj[i])
+  }
 }
 
 //desenha linha de chegada
 function desenhaChegada() {
+  fill("black")
   rect(350,0,10,400)
+  fill("red")
+  for (let yAtual=0; yAtual < 400; yAtual += 20){
+    rect(350,yAtual,10,10)
+  }
 }
 
 //verifica vencedor
 function verificaVencedor() {
-  if (xj1 > 350) {
-     text("Jogador 1 venceu!",50,200)
-    noLoop()
-  }
-  if (xj2 > 350) {
-     text("Jogador 2 venceu!",50,200)
-    noLoop()
-  }
-    if (xj3 > 350) {
-     text("Jogador 3 venceu!",50,200)
-    noLoop()
-  }
-    if (xj4 > 350) {
-     text("Jogador 3 venceu!",50,200)
-    noLoop()
+  for (let i = 0; i < quant; i++) {
+    if (xj[i] > 350) {
+      text (j[i] + " venceu!", 100, 200)
+    }
   }
 }
 
 //movimenta jogadores
 function keyReleased () {
-  if (key === 'a') {
-    xj1 += random(20)
-  }
-  if (key == 's') {
-    xj2 += random(20)
-  }
-  if (key == 'd') {
-    xj3 += random(20)
-  }
-  if (key == 'f') {
-    xj4 += random(20)
+  for (let i = 0; i< quant; i++) {
+    if (key == teclas[i]) {
+      xj[i] += random(20)
+    }
   }
 }
